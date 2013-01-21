@@ -1,6 +1,6 @@
 <!--A nice little equation editor powered by code cogs, so that 
 users can test latex before sticking it in posts-->
-<html>
+html>
 <head>
 <title>Equation Editor</title>
 <link rel="stylesheet" type="text/css"
