@@ -10,6 +10,8 @@ include_once("reused-code-vnF434/navimenu.php");
 include("reused-code-vnF434/forummenu.php");
 include_once("reused-code-vnF434/message.php");
 include_once("reused-code-vnF434/editform.php");
+$_SESSION['counter'] = isset($_SESSION['counter'])? $_SESSION['counter'] +1 : 0;
+echo $_SESSION['counter'];
 
 //Connect to the database
 sql_connect("orentago_forum");
