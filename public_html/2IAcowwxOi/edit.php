@@ -63,6 +63,7 @@ else {
       editform($entry,$id,"edit");
     }
     else {
+      echo $_SESSION['token'];
       if($_GET['csrf'] == $_SESSION['token']) {
 	//Check to see if the entry is empty
 	if(is_null($entry) || $entry=="") die();
