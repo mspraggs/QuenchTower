@@ -18,7 +18,7 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in']=="N") {
   htmlmessage("Invalid Request", "You are not logged in. Click <a class=\"entry\" href=\"#\" onClick=\"history.go(-1)\">here</a> to return to the previous page.");
 }
 else {
-  if($_SESSION['token'] == $_GET['csrf']) {
+  if($_SESSION['logout_token'] == $_GET['csrf']) {
   
     //Otherwise connect to the database
     sql_connect("orentago_forum");

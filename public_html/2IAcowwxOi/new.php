@@ -34,7 +34,7 @@ else {
   //Are they saving a post?
   if(!isset($_POST['id']) || !isset($_POST['title']) || !isset($_POST['entry'])) {
     //If not, give them the edit form
-    if(!isset($_SESSION['token'])) $_SESSION['token'] = md5(uniqid(mt_rand(),true));
+    $_SESSION['token'] = md5(uniqid(mt_rand(),true));
     editform("",$forum_id,"new");
   }
   else {

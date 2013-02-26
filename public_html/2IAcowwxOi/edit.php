@@ -58,12 +58,10 @@ else {
     //Check the POST variables
     if(!isset($_POST['id']) || !isset($_POST['entry'])) {
       //If no post, just output the edit form
-      if(!isset($_SESSION['token'])) $_SESSION['token'] = md5(uniqid(mt_rand(),true));
-      echo $_SESSION['token'];
+      $_SESSION['token'] = md5(uniqid(mt_rand(),true));
       editform($entry,$id,"edit");
     }
     else {
-      echo $_SESSION['token'];
       if($_GET['csrf'] == $_SESSION['token']) {
 	//Check to see if the entry is empty
 	if(is_null($entry) || $entry=="") die();

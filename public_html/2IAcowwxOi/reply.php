@@ -30,7 +30,7 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in']=="N") {
 else {
   //Do we need to get input?
   if(!isset($_POST['id']) || !isset($_POST['entry'])) {
-    if(!isset($_SESSION['token'])) $_SESSION['token'] = md5(uniqid(mt_rand(),true));
+    $_SESSION['token'] = md5(uniqid(mt_rand(),true));
     editform("",$thread_id,"reply");
   }
   else {
