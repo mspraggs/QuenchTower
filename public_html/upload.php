@@ -77,7 +77,6 @@ if(!isset($_SESSION['uid']) || $_SESSION['logged_in']=="N") {
   htmlmessage("Authentication Required","You must be logged in to upload files. Click <a href=\"index.php?action=login\" class=\"entry\">here</a> to login.");
 }
 else {
-  $_SESSION['token'] = md5(uniqid(mt_rand(),true));
   //Get the user id if they're logged in
   $uid=filter_var($_SESSION['uid'],FILTER_SANITIZE_NUMBER_INT);
   if(isset($_FILES["file"]["error"])) {//Check to see if we're uploading a file or not.
