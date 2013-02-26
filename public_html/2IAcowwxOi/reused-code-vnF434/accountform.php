@@ -13,7 +13,7 @@ on the form.*/
 	<tr>
 		<td colspan=2 align="center"><h1 class="entry">Account</h1></td>
 	</tr>
-	<form action="index.php?action=account" method="post" name="account1" onsubmit="return validateForm()">
+	<form action="index.php?action=account&csrf=<?php echo $_SESSION['token']; ?>" method="post" name="account1" onsubmit="return validateForm()">
 	<?php
 	if($try>1)
 	{
@@ -40,7 +40,7 @@ on the form.*/
 		<td colspan=2 align="center"><input type="submit" value="Change Password" /></td>
 	</tr>
 	</form>
-	<form action="index.php?action=account" method="post" name="account2">
+	<form action="index.php?action=account&csrf=<?php echo $_SESSION['token']; ?>" method="post" name="account2">
 	<input type="hidden" name="contact" value="Y" />
 	<tr>
 		<td align="center" colspan=2><p class="entry">Notify me when a user replies to a thread I've posted in: 
