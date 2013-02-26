@@ -28,7 +28,7 @@ to log in or logout, change our account settings, etc.*/
 			<?php
 				if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']=="Y")
 				{
-				  if(!isset($_SESSION['token'])) $_SESSION['token'] = md5(uniqid(mt_rand(),true));
+				  $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 				?>
 					<a href="index.php?action=logout&csrf=<?php echo $_SESSION['token']; ?>" class="header">Logout</a><br />
 					<a href="index.php?action=account" class="header">Account Settings</a><br />
