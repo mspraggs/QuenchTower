@@ -30,7 +30,7 @@ to log in or logout, change our account settings, etc.*/
 				{
 				  if(!isset($_SESSION['token'])) $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 				?>
-					<a href="index.php?action=logout&csrf=$_SESSION['token']" class="header">Logout</a><br />
+					<a href="index.php?action=logout&csrf=<?php echo $_SESSION['token']; ?>" class="header">Logout</a><br />
 					<a href="index.php?action=account" class="header">Account Settings</a><br />
 					<a href="index.php?action=share" class="header">Share This Site</a><br />
 					<a href="upload.php" class="header">Upload Files</a>
