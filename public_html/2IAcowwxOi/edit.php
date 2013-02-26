@@ -62,6 +62,7 @@ else {
       editform($entry,$id,"edit");
     }
     else {
+      echo $_GET['csrf']."<br />".$_SESSION['token'];
       if($_GET['csrf'] == $_SESSION['token']) {
 	//Check to see if the entry is empty
 	if(is_null($entry) || $entry=="") die();
@@ -87,12 +88,13 @@ else {
 	  htmlmessage("Edit Successful", $message);
 	}
 	else {
-	  htmlmessage("Session Error","There was an error validating your session.");
+	  //Otherwise tell them the edit failed.
+	  htmlmessage("Edit Failed", "An error occured whilst performing your request.");
 	}
       }
       else {
-	//Otherwise tell them the edit failed.
-	htmlmessage("Edit Failed", "An error occured whilst performing your request.");
+	htmlmessage("Session Error","There was an error validating your session.");
+	
       }
     }
   }
