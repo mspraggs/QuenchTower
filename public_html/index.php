@@ -125,7 +125,7 @@ $site_url = 'http://orentago.linkpc.net'.$folder;
 
 	}
 
-	timedCount()
+//timedCount()
 </script>
 </head>
 <body>
