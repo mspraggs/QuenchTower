@@ -9,7 +9,7 @@
 	 * forth. The 2IAcowwxOi/reused-code-vnF434 folder contains reused code and functions.
 
 	 * CSS is used to style tables and so forth, and is included in mystyles.css
-	*/
+	 */
 
 //Start a PHP session to keep track of users
 session_start();
@@ -23,6 +23,7 @@ $offset =  timezone_offset_get($dateTimeZoneHere,$dateTimeHere);
 //so that we can keep track of those users that are online.
 include("2IAcowwxOi/reused-code-vnF434/refreshuser.php");
 include("2IAcowwxOi/reused-code-vnF434/mqoff.php");
+include_once("reused-code-vnF434/message.php");
 
 //Get the ip address of the visitor to get round port forwarding on shitty sky router
 //Also use to determine directory we're in in case we're in a subfolder
@@ -30,17 +31,17 @@ $folder=dirname($_SERVER['REQUEST_URI']);
 if ($folder=="/") $folder="";
 $ip=$_SERVER['REMOTE_ADDR'];
 if(substr($ip,0,3)=="192")
-{
-	$site_url = 'http://192.168.0.3'.$folder;
-}
+  {
+    $site_url = 'http://192.168.0.3'.$folder;
+  }
 else
-{
-	$site_url = 'http://orentago.linkpc.net'.$folder;
-}
+  {
+    $site_url = 'http://orentago.linkpc.net'.$folder;
+  }
 
-	/* 
-	 * The following are some standard HTML bits and pieces
-	*/
+/* 
+ * The following are some standard HTML bits and pieces
+ */
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
@@ -48,185 +49,193 @@ else
 <head>
 <title>The Quench Tower</title>
 <meta name="description" content="The Birmingham fourth year chemical engineering revision forum." />
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
-<script type="text/javascript">
-//Google Analytics script. WHY?
+  <link rel="stylesheet" type="text/css" href="mystyle.css" />
+  <script type="text/javascript">
+  //Google Analytics script. WHY?
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-29596672-1']);
-  _gaq.push(['_trackPageview']);
+_gaq.push(['_setAccount', 'UA-29596672-1']);
+_gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 
 </script>
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-//Load mathjax so we can display LaTeX
-</script>
-<script type="text/javascript">
-	//Ajax for countdown timer
-	var obj;
+  //Load mathjax so we can display LaTeX
+  </script>
+  <script type="text/javascript">
+  //Ajax for countdown timer
+  var obj;
 
-	function ProcessXML(url) {
-	  // native  object
+function ProcessXML(url) {
+  // native  object
 	
-	  if (window.XMLHttpRequest) {
-	    // obtain new object
-		obj = new XMLHttpRequest();
-	    // set the callback function
-	    obj.onreadystatechange = processChange;
-	    // we will do a GET with the url; "true" for asynch
-	    obj.open("GET", url, true);
-	    // null for GET with native object
-	    obj.send(null);
-	  // IE/Windows ActiveX object
-	  } else if (window.ActiveXObject) {
-	    obj = new ActiveXObject("Microsoft.XMLHTTP");
-	    if (obj) {
-	      obj.onreadystatechange = processChange;
-	      obj.open("GET", url, true);
-	      // don't send null for ActiveX
-	      obj.send();
-	    }
-	  } else {
-	    alert("Your browser does not support AJAX");
-	  }
-	}
+  if (window.XMLHttpRequest) {
+    // obtain new object
+    obj = new XMLHttpRequest();
+    // set the callback function
+    obj.onreadystatechange = processChange;
+    // we will do a GET with the url; "true" for asynch
+    obj.open("GET", url, true);
+    // null for GET with native object
+    obj.send(null);
+    // IE/Windows ActiveX object
+  } else if (window.ActiveXObject) {
+    obj = new ActiveXObject("Microsoft.XMLHTTP");
+    if (obj) {
+      obj.onreadystatechange = processChange;
+      obj.open("GET", url, true);
+      // don't send null for ActiveX
+      obj.send();
+    }
+  } else {
+    alert("Your browser does not support AJAX");
+  }
+}
 	
-	function processChange() {
-	    // 4 means the response has been returned and ready to be processed
-	    if (obj.readyState == 4) {
-	        // 200 means "OK"
-	        if(obj.status == 200) {
-		        updateTime(obj.responseText);
-		}
-		else
-		{
-			//alert("An error occured with Ajax");
-		}
+function processChange() {
+  // 4 means the response has been returned and ready to be processed
+  if (obj.readyState == 4) {
+    // 200 means "OK"
+    if(obj.status == 200) {
+      updateTime(obj.responseText);
+    }
+    else
+      {
+	//alert("An error occured with Ajax");
+      }
 		        
-	    }
-	}
+  }
+}
 	
-	function updateTime(response) {
-	  // if response is not empty, we have received data back from the server
-	  if (response != '')
-	  {
-	    // the value of response is returned from timeleft.php:
-		var d = document.getElementById("countdown");
-		d.innerHTML = "<h2 class='header'>Time left until the end of exams: "+response+"</h2>";
-	  }
-	  else
-	  {
-	    //  if response is empty, we need to send the username to the server
-	    url = <?php echo "\"".$site_url."/timeleft.php\";"; ?>
-	    ProcessXML(url);
-	  }
-	}
-	function timedCount()
-	{
-		updateTime('')
-		t=setTimeout("timedCount()",1000);
+function updateTime(response) {
+  // if response is not empty, we have received data back from the server
+  if (response != '')
+    {
+      // the value of response is returned from timeleft.php:
+      var d = document.getElementById("countdown");
+      d.innerHTML = "<h2 class='header'>Time left until the end of exams: "+response+"</h2>";
+    }
+  else
+    {
+      //  if response is empty, we need to send the username to the server
+      url = <?php echo "\"".$site_url."/timeleft.php\";"; ?>
+	ProcessXML(url);
+    }
+}
+function timedCount()
+{
+  updateTime('')
+    t=setTimeout("timedCount()",1000);
 
-	}
+}
 
-	timedCount()
+timedCount()
 </script>
 </head>
 <body>
 <?php
 //Extract the action from the GET variable
-if(!isset($_GET['action']))
-{
-	//if it's not set, display the homepage.
-	include("2IAcowwxOi/home2.php");
+$flag = 1;
+if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']=="Y") {
+  if(!isset($_GET['csrf']) || $_GET['csrf'] != $_SESSION['token']) {
+    $flag = 0;
+  }
+  $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 }
+
+if(!isset($_GET['action']) || $flag == 1)
+  {
+    //if it's not set, display the homepage.
+    include("2IAcowwxOi/home2.php");
+  }
 else
-{ //Else figure out which page to include
-	if($_GET['action']=="forum")
-	{
-		include("2IAcowwxOi/forum.php");
-	}
-	elseif($_GET['action']=="thread")
-	{
-		include("2IAcowwxOi/thread.php");
-	}
-	elseif($_GET['action']=="login")
-	{
-		include("2IAcowwxOi/login.php");
-	}
-	elseif($_GET['action']=="validate")
-	{
-		include("2IAcowwxOi/validate.php");
-	}
-	elseif($_GET['action']=="edit")
-	{
-		include("2IAcowwxOi/edit.php");
-	}
-	elseif($_GET['action']=="delete")
-	{
-		include("2IAcowwxOi/delete.php");
-	}
-	elseif($_GET['action']=="new")
-	{
-		include("2IAcowwxOi/new.php");
-	}
-	elseif($_GET['action']=="reply")
-	{
-		include("2IAcowwxOi/reply.php");
-	}
-	elseif($_GET['action']=="password")
-	{
-		include("2IAcowwxOi/changepwd.php");
-	}
-	elseif($_GET['action']=="register")
-	{
-		include("2IAcowwxOi/register.php");
-	}
-	elseif($_GET['action']=="logout")
-	{
-		include("2IAcowwxOi/logout.php");
-	}
-	elseif($_GET['action']=="reset")
-	{
-		include("2IAcowwxOi/resetpwd.php");
-	}
-	elseif($_GET['action']=="share")
-	{
-		include("2IAcowwxOi/share.php");
-	}
-	elseif($_GET['action']=="report")
-	{
-		include("2IAcowwxOi/report.php");
-	}
-	elseif($_GET['action']=="tos")
-	{
-		include("2IAcowwxOi/tandcs.php");
-	}
-	elseif($_GET['action']=="account")
-	{
-		include("2IAcowwxOi/account.php");
-	}
-	elseif($_GET['action']=="search")
-	{
-		include("2IAcowwxOi/search.php");
-	}
-	elseif($_GET['action']=="email")
-	{
-		include("2IAcowwxOi/email.php");
-	}
-	elseif($_GET['action']=="unblock")
-	{
-		include("2IAcowwxOi/unblock.php");
-	}
-	else
-	{//If the action isn't one of the above, return the user to the homepage.
-		include("2IAcowwxOi/home2.php");
-	}
-}
+  { //Else figure out which page to include
+    if($_GET['action']=="forum")
+      {
+	include("2IAcowwxOi/forum.php");
+      }
+    elseif($_GET['action']=="thread")
+      {
+	include("2IAcowwxOi/thread.php");
+      }
+    elseif($_GET['action']=="login")
+      {
+	include("2IAcowwxOi/login.php");
+      }
+    elseif($_GET['action']=="validate")
+      {
+	include("2IAcowwxOi/validate.php");
+      }
+    elseif($_GET['action']=="edit")
+      {
+	include("2IAcowwxOi/edit.php");
+      }
+    elseif($_GET['action']=="delete")
+      {
+	include("2IAcowwxOi/delete.php");
+      }
+    elseif($_GET['action']=="new")
+      {
+	include("2IAcowwxOi/new.php");
+      }
+    elseif($_GET['action']=="reply")
+      {
+	include("2IAcowwxOi/reply.php");
+      }
+    elseif($_GET['action']=="password")
+      {
+	include("2IAcowwxOi/changepwd.php");
+      }
+    elseif($_GET['action']=="register")
+      {
+	include("2IAcowwxOi/register.php");
+      }
+    elseif($_GET['action']=="logout")
+      {
+	include("2IAcowwxOi/logout.php");
+      }
+    elseif($_GET['action']=="reset")
+      {
+	include("2IAcowwxOi/resetpwd.php");
+      }
+    elseif($_GET['action']=="share")
+      {
+	include("2IAcowwxOi/share.php");
+      }
+    elseif($_GET['action']=="report")
+      {
+	include("2IAcowwxOi/report.php");
+      }
+    elseif($_GET['action']=="tos")
+      {
+	include("2IAcowwxOi/tandcs.php");
+      }
+    elseif($_GET['action']=="account")
+      {
+	include("2IAcowwxOi/account.php");
+      }
+    elseif($_GET['action']=="search")
+      {
+	include("2IAcowwxOi/search.php");
+      }
+    elseif($_GET['action']=="email")
+      {
+	include("2IAcowwxOi/email.php");
+      }
+    elseif($_GET['action']=="unblock")
+      {
+	include("2IAcowwxOi/unblock.php");
+      }
+    else
+      {//If the action isn't one of the above, return the user to the homepage.
+	include("2IAcowwxOi/home2.php");
+      }
+  }
 
 //If we haven't already, include the sql connection file
 include_once("../protected/sql_connect.inc.php");
@@ -246,13 +255,13 @@ mysql_close();
 //Output some contact details in a footer, along with the number of users online.
 ?>
 <table align="center" class="header">
-<tr>
-<td>
-<p class="footer">Contact: webmaster@orentago.linkpc.net</p>
-</td>
-<td align="right">
-<p class="footer"><?php echo $num_online; ?> users online of <?php echo $num_users; ?>
-</td>
-</tr>
-</body>
-</html>
+  <tr>
+  <td>
+  <p class="footer">Contact: webmaster@orentago.linkpc.net</p>
+  </td>
+  <td align="right">
+  <p class="footer"><?php echo $num_online; ?> users online of <?php echo $num_users; ?>
+  </td>
+  </tr>
+  </body>
+  </html>
