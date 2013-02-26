@@ -8,6 +8,7 @@ include_once("../protected/sql_connect.inc.php");
 include("reused-code-vnF434/forummenu.php");
 include_once("reused-code-vnF434/editform.php");
 include_once("reused-code-vnF434/navimenu.php");
+include_once("reused-code-vnF434/message.php");
 
 //Connect to the database
 sql_connect("orentago_forum");
