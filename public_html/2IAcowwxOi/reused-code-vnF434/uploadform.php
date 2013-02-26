@@ -56,8 +56,8 @@ if($message!="")
 		$url1=$site_url."/".$url;
 	?>
 	<tr>
-		<td width=75%><a href=<?php echo "\"/".$url1."\""; ?> class="entry"><?php echo $url1; ?></a></td>
-		<td align="right" width =25% align="right"><a href=<?php echo "\"upload.php?id=".$fid."&csrf=".$_SESSION['csrf']."\""; ?> class="entry" onClick='return confirmDelete();'>Delete</a></td>
+		<td width=75%><a href=<?php echo "\"".$url1."\""; ?> class="entry"><?php echo $url1; ?></a></td>
+		<td align="right" width =25% align="right"><a href=<?php echo "\"upload.php?id=".$fid."&csrf=".$_SESSION['token']."\""; ?> class="entry" onClick='return confirmDelete();'>Delete</a></td>
 	</tr>
 	<?php
 	}
