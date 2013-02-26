@@ -28,15 +28,7 @@ include("2IAcowwxOi/reused-code-vnF434/mqoff.php");
 //Also use to determine directory we're in in case we're in a subfolder
 $folder=dirname($_SERVER['REQUEST_URI']);
 if ($folder=="/") $folder="";
-$ip=$_SERVER['REMOTE_ADDR'];
-if(substr($ip,0,3)=="192")
-{
-	$site_url = 'http://192.168.0.3'.$folder;
-}
-else
-{
-	$site_url = 'http://orentago.linkpc.net'.$folder;
-}
+$site_url = 'http://orentago.linkpc.net'.$folder;
 
 	/* 
 	 * The following are some standard HTML bits and pieces
