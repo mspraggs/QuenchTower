@@ -5,6 +5,10 @@ include_once("../protected/sql_connect.inc.php");
 function uploadform($message, $uid)
 {
   $_SESSION['token'] = md5(uniqid(mt_rand(),true));
+
+  $folder=dirname($_SERVER['REQUEST_URI']);
+  if ($folder=="/") $folder="";
+  $site_url = 'http://orentago.linkpc.net'.$folder;
 ?>
 <table align="center" class="entry">
 	<tr>
