@@ -6,6 +6,7 @@
 //Include some useful files
 include_once("../protected/sql_connect.inc.php");
 include_once("reused-code-vnF434/editform.php");
+include_once("reused-code-vnF434/navimenu.php");
 
 //Connect to the database
 sql_connect("orentago_forum");
