@@ -59,6 +59,7 @@ else {
     if(!isset($_POST['id']) || !isset($_POST['entry'])) {
       //If no post, just output the edit form
       if(!isset($_SESSION['token'])) $_SESSION['token'] = md5(uniqid(mt_rand(),true));
+      echo $_SESSION['token'];
       editform($entry,$id,"edit");
     }
     else {
