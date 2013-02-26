@@ -83,6 +83,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']=="Y")
 	      //Perform the check
 	      if($pwd3!=$pwd)
 		{
+		  $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 		  //If they've done it wrong, tell them
 		  chpwdform(2, $notify);
 		}
