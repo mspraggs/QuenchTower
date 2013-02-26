@@ -40,7 +40,6 @@ $site_url = 'http://orentago.linkpc.net'.$folder;
 <head>
 <title>The Quench Tower</title>
 <meta name="description" content="The Birmingham fourth year chemical engineering revision forum." />
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
 <script type="text/javascript">
 //Google Analytics script. WHY?
   var _gaq = _gaq || [];
