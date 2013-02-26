@@ -26,7 +26,7 @@ if($message!="")
 <?php
 }
 ?>
-	<form action="upload.php" method="post" enctype="multipart/form-data">
+	<form action="upload.php&csrf=$_SESSION['token']" method="post" enctype="multipart/form-data">
 	<tr>
 		<td align="center" width=50%><p class="entry">Filename: <input type="file" name="file" id="file" /></td>
 	</tr>
@@ -52,7 +52,7 @@ if($message!="")
 	?>
 	<tr>
 		<td width=75%><a href=<?php echo "\"/".$url."\""; ?> class="entry"><?php echo $url1; ?></a></td>
-		<td align="right" width =25% align="right"><a href=<?php echo "\"upload.php?id=".$fid."\""; ?> class="entry" onClick='return confirmDelete();'>Delete</a></td>
+		<td align="right" width =25% align="right"><a href=<?php echo "\"upload.php?id=".$fid."&csrf=".$_SESSION['csrf']."\""; ?> class="entry" onClick='return confirmDelete();'>Delete</a></td>
 	</tr>
 	<?php
 	}

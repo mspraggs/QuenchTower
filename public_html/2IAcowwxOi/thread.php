@@ -91,6 +91,8 @@ if(isset($_SESSION['uid']) && $_SESSION['logged_in']=="Y")
 	$row=mysql_fetch_array($r);
 	$uname=$row['uname'];
 	$secgroup=$row['secgroup'];
+	//Set some CSRF token stuff
+	$_SESSION['token'] = md5(uniqid(mt_rand(),true));
 }
 
 //Run the query
@@ -204,16 +206,16 @@ if($r=mysql_query($query))
 			//Add edit and delete tags depending on whether the user is the poster, or a mod or admin
 			if($user==$uname || $secgroup==2 || $secgroup==3)
 			{
-				echo "<a class='entry' href='index.php?action=delete&id=$id' onClick='return confirmDelete();'>Delete</a>";
+				echo "<a class='entry' href='index.php?action=delete&id=$id&csrf=".$_SESSION['token']."' onClick='return confirmDelete();'>Delete</a>";
 				echo " <a class='entry' href='index.php?action=edit&id=$id'>Edit</a> ";
 				//Only admins and moderators can email users.
 				if($secgroup==2 || $secgroup==3)
 				{
 					echo "<a class='entry' href='index.php?action=email&email=$email'>Email</a><br />";
-					if($reported=='Y') echo "<a href='index.php?action=unblock&id=$id' class='entry'>Unblock</a>";
+					if($reported=='Y') echo "<a href='index.php?action=unblock&id=$id&csrf=".$_SESSION['token']."' class='entry'>Unblock</a>";
 				}
 			}
-			if($reported=='N') echo "<a href='index.php?action=report&id=$id' class='entry'>Report Abuse</a>";
+			if($reported=='N') echo "<a href='index.php?action=report&id=$id&csrf=".$_SESSION['token']."' class='entry'>Report Abuse</a>";
 		}
 		//Add a link to report the post
 ?>
