@@ -50,10 +50,6 @@ include_once("2IAcowwxOi/reused-code-vnF434/uploadform.php");
 //Handy function to output message in html table.
 include_once("2IAcowwxOi/reused-code-vnF434/message.php");
 
-$folder=dirname($_SERVER['REQUEST_URI']);
-if ($folder=="/") $folder="";
-$site_url = 'http://orentago.linkpc.net'.$folder;
-
 function check_filetype($ftype) {
   //Checks to see if the filtype is one that we support. No PHP files allowed!
   switch($ftype) {
