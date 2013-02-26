@@ -26,7 +26,7 @@ if($message!="")
 <?php
 }
 ?>
-	<form action="upload.php&csrf=<?php echo $_SESSION['token']; ?>" method="post" enctype="multipart/form-data">
+	<form action="upload.php?csrf=<?php echo $_SESSION['token']; ?>" method="post" enctype="multipart/form-data">
 	<tr>
 		<td align="center" width=50%><p class="entry">Filename: <input type="file" name="file" id="file" /></td>
 	</tr>
