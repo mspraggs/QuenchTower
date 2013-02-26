@@ -32,7 +32,7 @@
    </script>
  <?php
      //Include some useful code
-   include_once("../sql_connect.inc.php");
+   include_once("../protected/sql_connect.inc.php");
 include_once("reused-code-vnF434/forummenu.php");
 include_once("reused-code-vnF434/message.php");
 include_once("reused-code-vnF434/accountform.php");
