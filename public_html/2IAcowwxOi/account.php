@@ -126,7 +126,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']=="Y") {
       }
     }
     else {
-      htmlmessage("Invalid Session","It looks like your session is invalid.")
+      htmlmessage("Invalid Session","It looks like your session is invalid.");
 	}
   }
 }
