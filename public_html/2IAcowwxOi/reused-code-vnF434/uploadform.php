@@ -4,6 +4,7 @@ files in the user's directory on the server.*/
 include_once("../protected/sql_connect.inc.php");
 function uploadform($message, $uid)
 {
+  $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 ?>
 <table align="center" class="entry">
 	<tr>
