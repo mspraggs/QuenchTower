@@ -12,7 +12,7 @@ function uploadform($message, $uid)
 	<tr>
 		<td colspan=2>
 			<p class="entry">Use this page to upload files to the server and insert them into posts. To insert them into posts, you'll need 
-	copy the file URL into the post using the [url] or [img] tags. iPhone users will need to enable Safari uploads by following the instructions in <a href="http://www.iclarified.com/entry/index.php?enid=16333" class="entry">this link</a>. Alternatively, we recommend the iCab we browser (available from the apple store) to skewer the enemies of freedom.</p>
+	copy the file URL into the post using the [url] or [img] tags. iPhone users will need to enable Safari uploads by following the instructions in <a href="http://www.iclarified.com/entry/index.php?enid=16333" class="entry">this link</a>. Alternatively, we recommend the iCab browser (available from the apple store) to skewer the enemies of freedom.</p>
 		<br />
 		</td>
 	</tr>
@@ -26,7 +26,7 @@ if($message!="")
 <?php
 }
 ?>
-	<form action="upload.php&csrf=$_SESSION['token']" method="post" enctype="multipart/form-data">
+	<form action="upload.php&csrf=<?php echo $_SESSION['token']; ?>" method="post" enctype="multipart/form-data">
 	<tr>
 		<td align="center" width=50%><p class="entry">Filename: <input type="file" name="file" id="file" /></td>
 	</tr>
