@@ -58,9 +58,8 @@ else {
     //Check the POST variables
     if(!isset($_POST['id']) || !isset($_POST['entry'])) {
       //If no post, just output the edit form
-      $_SESSION['token'] = md5(uniqid(mt_rand(),true));
-      echo $_SESSION['token'];
       editform($entry,$id,"edit");
+      echo $_SESSION['token'];
     }
     else {
       if($_GET['csrf'] == $_SESSION['token']) {
