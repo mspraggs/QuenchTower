@@ -10,8 +10,6 @@ include_once("reused-code-vnF434/navimenu.php");
 include("reused-code-vnF434/forummenu.php");
 include_once("reused-code-vnF434/message.php");
 include_once("reused-code-vnF434/editform.php");
-$_SESSION['counter'] = isset($_SESSION['counter'])? $_SESSION['counter'] +1 : 0;
-echo $_SESSION['counter'];
 
 //Connect to the database
 sql_connect("orentago_forum");
@@ -61,10 +59,8 @@ else {
     if(!isset($_POST['id']) || !isset($_POST['entry'])) {
       //If no post, just output the edit form
       editform($entry,$id,"edit");
-      echo $_SESSION['token'];
     }
     else {
-      echo $_SESSION['token'];
       if($_GET['csrf'] == $_SESSION['token']) {
 	//Check to see if the entry is empty
 	if(is_null($entry) || $entry=="") die();
