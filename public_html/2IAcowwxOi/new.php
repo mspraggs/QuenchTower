@@ -5,6 +5,7 @@
 
 //Include some useful files
 include_once("../protected/sql_connect.inc.php");
+include("reused-code-vnF434/forummenu.php");
 include_once("reused-code-vnF434/editform.php");
 include_once("reused-code-vnF434/navimenu.php");
 
