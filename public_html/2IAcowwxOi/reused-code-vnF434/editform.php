@@ -9,7 +9,6 @@
 function editform($entry, $id, $action)
 {
   //Check what we need to do and set up the target url
-  $_SESSION['token'] = md5(uniqid(mt_rand(),true));
   $form_action="\"index.php?action=".$action."&csrf=".$_SESSION['token']."\"";
 	//Need to set up the forum action based on what the user's
 	//going to put in the form (more detail on this below).
