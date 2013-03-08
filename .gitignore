@@ -1,1 +1,1 @@
-sql_connect.inc.php
+protected/sql_connect.inc.php
